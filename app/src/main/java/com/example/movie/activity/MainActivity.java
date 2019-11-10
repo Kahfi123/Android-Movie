@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.graphics.Movie;
 import android.os.Bundle;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
-    public ProgressBar progressBar;
+//    public ProgressBar progressBar;
+    public SwipeRefreshLayout swipeRefreshLayout;
     public MovieAdapter movieAdapter;
     public EndlessRecyclerViewScrollListener scrollListener;
     private MovieController movieController;
@@ -36,7 +38,15 @@ public class MainActivity extends AppCompatActivity {
     private void setupView() {
         recyclerView = findViewById(R.id.recyvlerView);
         recyclerView.setVisibility(View.GONE);
-        progressBar = findViewById(R.id.progressBar);
+//        progressBar = findViewById(R.id.progressBar);
+        swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                movieController.resetRecyclerViewState();
+                movieController.getTopRatedMovies(1);
+            }
+        });
         movieAdapter = new MovieAdapter(new ArrayList<MovieItem>(), getApplicationContext());
         recyclerView.setAdapter(movieAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -49,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
-                // Add whatever code is needed to append new items to the bottom of the list
                 movieController.getTopRatedMovies(page);
             }
         };

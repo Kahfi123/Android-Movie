@@ -26,9 +26,10 @@ public class MovieController {
         this.view = view;
         movieItems = new ArrayList<>();
         view.movieAdapter.setMovieItems(movieItems);
+        view.swipeRefreshLayout.setRefreshing(true);
     }
     public void updateView(Response<BasicResponse> response){
-        view.progressBar.setVisibility(View.GONE);
+        view.swipeRefreshLayout.setRefreshing(false);
         view.recyclerView.setVisibility(View.VISIBLE);
         if(response.code()==200){
             int currentMovies = this.movieItems.size();
@@ -56,7 +57,7 @@ public class MovieController {
             @Override
             public void onFailure(Call<BasicResponse> call, Throwable t) {
                 Log.d(TAG, "FAILED : "+ t.getMessage());
-                view.progressBar.setVisibility(View.GONE);
+                view.swipeRefreshLayout.setRefreshing(false);
             }
         });
     }
