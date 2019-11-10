@@ -2,6 +2,7 @@ package com.example.movie.adapter;
 
 import android.content.Context;
 import android.graphics.Movie;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
     }
 
     public void setMovieItems(ArrayList<MovieItem> movieItems) {
-        this.movieItems.addAll(movieItems);
-        notifyDataSetChanged();
+       this.movieItems = movieItems;
     }
 
     @NonNull

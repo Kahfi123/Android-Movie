@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.movie.activity.MainActivity;
+import com.example.movie.adapter.MovieAdapter;
 import com.example.movie.api.ApiService;
 import com.example.movie.api.RestApiManager;
 import com.example.movie.model.BasicResponse;
@@ -24,22 +25,27 @@ public class MovieController {
     public MovieController(MainActivity view) {
         this.view = view;
         movieItems = new ArrayList<>();
-    }
-    public void updateView(){
-        view.progressBar.setVisibility(View.GONE);
-        view.recyclerView.setVisibility(View.VISIBLE);
         view.movieAdapter.setMovieItems(movieItems);
     }
-    public void getTopRatedMovies(){
+    public void updateView(Response<BasicResponse> response){
+        view.progressBar.setVisibility(View.GONE);
+        view.recyclerView.setVisibility(View.VISIBLE);
+        if(response.code()==200){
+            int currentMovies = this.movieItems.size();
+            movieItems.addAll(response.body().getMovie());
+            view.movieAdapter.notifyItemRangeChanged(currentMovies,response.body().getMovie().size());
+        }
+
+    }
+    public void getTopRatedMovies(int page){
         ApiService apiService = RestApiManager.getInstance().getApiService();
-        Call<BasicResponse> apiServiceCall = apiService.getTopRatedMovies(RestApiManager.BASE_MOVIE_API_KEY,1);
+        Call<BasicResponse> apiServiceCall = apiService.getTopRatedMovies(RestApiManager.BASE_MOVIE_API_KEY,page);
         apiServiceCall.enqueue(new Callback<BasicResponse>() {
             @Override
             public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
-                if(response.code()==200){
-                    movieItems.addAll(response.body().getMovie());
-                }
-                updateView();
+                Log.d(TAG, "SUCCESS : "+ call.request());
+                Log.d(TAG, "BODY : "+ response.body().toString());
+                updateView(response);
             }
 
             @Override
