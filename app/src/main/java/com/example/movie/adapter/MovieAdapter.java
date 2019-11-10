@@ -1,13 +1,16 @@
 package com.example.movie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Movie;
+import android.net.Uri;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,6 +57,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         String popularityNumbers = "  "+movie.getPopularity()+" \nmembers";
         holder.txtPopularityNumbers.setText(popularityNumbers);
         holder.txtOverview.setText(movie.getOverview());
+        holder.contentBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://google.com";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setData(Uri.parse(url));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -68,6 +81,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         private final TextView txtRatingNumbers;
         private final TextView txtPopularityNumbers;
         private final TextView txtOverview;
+        private final LinearLayout contentBox;
 
 
         public Holder(@NonNull View itemView) {
@@ -78,6 +92,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
             txtRatingNumbers = itemView.findViewById(R.id.txtRatingNumbers);
             txtPopularityNumbers = itemView.findViewById(R.id.txtPopularityNumbers);
             txtOverview = itemView.findViewById(R.id.txtOverview);
+            contentBox = itemView.findViewById(R.id.contentBox);
         }
     }
 }
