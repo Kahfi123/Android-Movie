@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movie</string>
+    <string name="title">Title</string>
+    <string name="image_of_a_movie">Image of A movie</string>
+    <string name="rating_image">rating image</string>
+    <string name="rating">0</string>
 </resources>

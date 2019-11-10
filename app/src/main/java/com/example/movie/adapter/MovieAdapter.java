@@ -1,0 +1,74 @@
+package com.example.movie.adapter;
+
+import android.content.Context;
+import android.graphics.Movie;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.example.movie.R;
+import com.example.movie.api.RestApiManager;
+import com.example.movie.model.MovieItem;
+
+import java.util.ArrayList;
+
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
+    private ArrayList<MovieItem> movieItems;
+    private Context context;
+
+    public MovieAdapter(ArrayList<MovieItem> movieItems, Context context) {
+        this.movieItems = movieItems;
+        this.context = context;
+    }
+
+    public void setMovieItems(ArrayList<MovieItem> movieItems) {
+        this.movieItems.addAll(movieItems);
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public MovieAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_movie,parent, false);
+        return new Holder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MovieAdapter.Holder holder, int position) {
+        MovieItem movie = movieItems.get(position);
+        Glide.with(context).load(RestApiManager.BASE_MOVIE_IMAGE+movie.getPosterPath()).centerCrop().into(holder.img);
+        String pos = String.valueOf(position+1);
+        String releaseYear = movie.getReleaseDate().split("-")[0];
+        String title = pos + ". " + movie.getTitle()+" ("+releaseYear+")";
+        holder.txtTitle.setText(title);
+        holder.txtRating.setText(String.valueOf(movie.getVoteAverage()));
+        holder.txtOverview.setText(movie.getOverview());
+    }
+
+    @Override
+    public int getItemCount() {
+        return movieItems.size();
+    }
+
+    public class Holder extends RecyclerView.ViewHolder {
+        private final ImageView img;
+        private final TextView txtTitle;
+        private final TextView txtRating;
+        private final TextView txtOverview;
+
+        public Holder(@NonNull View itemView) {
+            super(itemView);
+            img = itemView.findViewById(R.id.img);
+            txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtRating = itemView.findViewById(R.id.txtRating);
+            txtOverview = itemView.findViewById(R.id.txtOverview);
+        }
+    }
+}
