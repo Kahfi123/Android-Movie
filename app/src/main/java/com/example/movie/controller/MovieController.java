@@ -19,8 +19,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieController {
-    MainActivity view;
-    ArrayList<MovieItem> movieItems;
+    private MainActivity view;
+    private ArrayList<MovieItem> movieItems;
     private static final String TAG = MovieController.class.getSimpleName();
     public MovieController(MainActivity view) {
         this.view = view;
@@ -32,8 +32,10 @@ public class MovieController {
         view.recyclerView.setVisibility(View.VISIBLE);
         if(response.code()==200){
             int currentMovies = this.movieItems.size();
-            movieItems.addAll(response.body().getMovie());
-            view.movieAdapter.notifyItemRangeChanged(currentMovies,response.body().getMovie().size());
+            if (response.body() != null) {
+                movieItems.addAll(response.body().getMovie());
+            }
+            view.movieAdapter.notifyItemRangeChanged(currentMovies, response.body() != null ? response.body().getMovie().size() : 0);
         }
 
     }
@@ -48,8 +50,6 @@ public class MovieController {
         apiServiceCall.enqueue(new Callback<BasicResponse>() {
             @Override
             public void onResponse(Call<BasicResponse> call, Response<BasicResponse> response) {
-                Log.d(TAG, "SUCCESS : "+ call.request());
-                Log.d(TAG, "BODY : "+ response.body().toString());
                 updateView(response);
             }
 
