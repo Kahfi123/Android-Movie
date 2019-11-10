@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
-//    public ProgressBar progressBar;
+    public ProgressBar progressBar;
     public SwipeRefreshLayout swipeRefreshLayout;
     public MovieAdapter movieAdapter;
     public EndlessRecyclerViewScrollListener scrollListener;
@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupView() {
         recyclerView = findViewById(R.id.recyvlerView);
         recyclerView.setVisibility(View.GONE);
-//        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 // Triggered only when new data needs to be appended to the list
+                progressBar.setVisibility(View.VISIBLE);
                 movieController.getTopRatedMovies(page);
             }
         };

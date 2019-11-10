@@ -28,9 +28,10 @@ public class MovieController {
         view.movieAdapter.setMovieItems(movieItems);
         view.swipeRefreshLayout.setRefreshing(true);
     }
-    public void updateView(Response<BasicResponse> response){
+    private void updateView(Response<BasicResponse> response){
         view.swipeRefreshLayout.setRefreshing(false);
         view.recyclerView.setVisibility(View.VISIBLE);
+        view.progressBar.setVisibility(View.GONE);
         if(response.code()==200){
             int currentMovies = this.movieItems.size();
             if (response.body() != null) {
@@ -58,6 +59,7 @@ public class MovieController {
             public void onFailure(Call<BasicResponse> call, Throwable t) {
                 Log.d(TAG, "FAILED : "+ t.getMessage());
                 view.swipeRefreshLayout.setRefreshing(false);
+                view.progressBar.setVisibility(View.GONE);
             }
         });
     }
