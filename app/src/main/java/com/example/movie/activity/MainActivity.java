@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     public ProgressBar progressBar;
     public MovieAdapter movieAdapter;
-    private EndlessRecyclerViewScrollListener scrollListener;
+    public EndlessRecyclerViewScrollListener scrollListener;
     private MovieController movieController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,4 +56,6 @@ public class MainActivity extends AppCompatActivity {
         // Adds the scroll listener to RecyclerView
         recyclerView.addOnScrollListener(scrollListener);
     }
+
+
 }

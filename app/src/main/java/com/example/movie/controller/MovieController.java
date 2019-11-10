@@ -37,6 +37,11 @@ public class MovieController {
         }
 
     }
+    public void resetRecyclerViewState(){
+        movieItems.clear();
+        view.movieAdapter.notifyDataSetChanged();
+        view.scrollListener.resetState();
+    }
     public void getTopRatedMovies(int page){
         ApiService apiService = RestApiManager.getInstance().getApiService();
         Call<BasicResponse> apiServiceCall = apiService.getTopRatedMovies(RestApiManager.BASE_MOVIE_API_KEY,page);
