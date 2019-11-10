@@ -51,6 +51,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         holder.txtRating.setText(String.valueOf(movie.getVoteAverage()));
         String ratingNumbers = " ("+movie.getVoteCount()+" votes)";
         holder.txtRatingNumbers.setText(ratingNumbers);
+        String popularityNumbers = "  "+movie.getPopularity()+" \nmembers";
+        holder.txtPopularityNumbers.setText(popularityNumbers);
         holder.txtOverview.setText(movie.getOverview());
     }
 
@@ -64,6 +66,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         private final TextView txtTitle;
         private final TextView txtRating;
         private final TextView txtRatingNumbers;
+        private final TextView txtPopularityNumbers;
         private final TextView txtOverview;
 
 
@@ -73,6 +76,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
             txtTitle = itemView.findViewById(R.id.txtTitle);
             txtRating = itemView.findViewById(R.id.txtRating);
             txtRatingNumbers = itemView.findViewById(R.id.txtRatingNumbers);
+            txtPopularityNumbers = itemView.findViewById(R.id.txtPopularityNumbers);
             txtOverview = itemView.findViewById(R.id.txtOverview);
         }
     }
