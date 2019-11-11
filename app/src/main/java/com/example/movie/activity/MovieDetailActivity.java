@@ -1,8 +1,10 @@
 package com.example.movie.activity;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -20,13 +22,16 @@ public class MovieDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getIntentData();
+        setContentView(R.layout.activity_movie_detail);
         setupView();
+        getIntentData();
+
     }
 
     private void getIntentData() {
         try{
             movie = (MovieItem) getIntent().getSerializableExtra("movie");
+
             mTitleTextView.setText(movie.getTitle());
         }catch (NullPointerException error){
             Log.d(TAG, "ERROR : "+error);
