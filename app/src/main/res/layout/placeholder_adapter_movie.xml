@@ -15,7 +15,7 @@
             android:id="@+id/img"
             android:layout_width="80dp"
             android:layout_height="100dp"
-            android:background="@color/background"
+            android:background="@color/shimmeringBackground"
             android:contentDescription="@string/image_of_a_movie"
             android:elevation="10dp" />
     </LinearLayout>
@@ -32,7 +32,7 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="@dimen/placeholderTextHeight"
-            android:background="@color/background" />
+            android:background="@color/shimmeringBackground" />
 
         <LinearLayout
             android:layout_marginTop="5dp"
@@ -49,7 +49,7 @@
             <View
                 android:layout_width="50dp"
                 android:layout_height="@dimen/placeholderTextHeight"
-                android:background="@color/background" />
+                android:background="@color/shimmeringBackground" />
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -59,7 +59,7 @@
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/placeholderImage"
-                android:background="@color/background" />
+                android:background="@color/shimmeringBackground" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

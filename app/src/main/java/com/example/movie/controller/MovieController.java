@@ -5,13 +5,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.movie.activity.MainActivity;
-import com.example.movie.adapter.MovieAdapter;
 import com.example.movie.api.ApiService;
 import com.example.movie.api.RestApiManager;
 import com.example.movie.model.BasicResponse;
 import com.example.movie.model.MovieItem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -32,6 +30,7 @@ public class MovieController {
         view.shimmerFrameLayout.stopShimmer();
         view.shimmerFrameLayout.setVisibility(View.GONE);
         view.recyclerView.setVisibility(View.VISIBLE);
+        view.progressBar.setVisibility(View.GONE);
         if(response.code()==200){
             int currentMovies = this.movieItems.size();
             if (response.body() != null) {

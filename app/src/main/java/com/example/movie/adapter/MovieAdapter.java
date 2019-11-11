@@ -48,7 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.Holder holder, int position) {
         final MovieItem movie = movieItems.get(position);
-        Glide.with(context).load(RestApiManager.BASE_MOVIE_IMAGE+movie.getPosterPath()).centerCrop().into(holder.img);
+        Glide.with(context).load(RestApiManager.BASE_MOVIE_IMAGE_w92+movie.getPosterPath()).centerCrop().into(holder.img);
         String pos = String.valueOf(position+1);
         String releaseYear = movie.getReleaseDate().split("-")[0];
         String title = pos + ". " + movie.getTitle()+" ("+releaseYear+")";
@@ -62,12 +62,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         holder.contentBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String url = "https://google.com";
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setData(Uri.parse(url));
                 Intent intent = new Intent(context, MovieDetailActivity.class);
-                intent.putExtra("movie",movie);
+                intent.putExtra("movieId",movie.getId());
                 context.startActivity(intent);
             }
         });
