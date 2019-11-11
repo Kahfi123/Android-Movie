@@ -26,12 +26,12 @@ public class MovieController {
         this.view = view;
         movieItems = new ArrayList<>();
         view.movieAdapter.setMovieItems(movieItems);
-        view.swipeRefreshLayout.setRefreshing(true);
     }
     private void updateView(Response<BasicResponse> response){
         view.swipeRefreshLayout.setRefreshing(false);
+        view.shimmerFrameLayout.stopShimmer();
+        view.shimmerFrameLayout.setVisibility(View.GONE);
         view.recyclerView.setVisibility(View.VISIBLE);
-        view.progressBar.setVisibility(View.GONE);
         if(response.code()==200){
             int currentMovies = this.movieItems.size();
             if (response.body() != null) {

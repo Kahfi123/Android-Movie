@@ -16,6 +16,7 @@ import com.example.movie.adapter.MovieAdapter;
 import com.example.movie.controller.MovieController;
 import com.example.movie.listener.EndlessRecyclerViewScrollListener;
 import com.example.movie.model.MovieItem;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public SwipeRefreshLayout swipeRefreshLayout;
     public MovieAdapter movieAdapter;
     public EndlessRecyclerViewScrollListener scrollListener;
+    public ShimmerFrameLayout shimmerFrameLayout;
     private MovieController movieController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
+        shimmerFrameLayout = findViewById(R.id.shimmerMovieContainer);
         swipeRefreshLayout = findViewById(R.id.swipeToRefresh);
+        swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 movieController.resetRecyclerViewState();
                 movieController.getTopRatedMovies(1);
+                shimmerFrameLayout.startShimmer();
+                shimmerFrameLayout.setVisibility(View.VISIBLE);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
         movieAdapter = new MovieAdapter(new ArrayList<MovieItem>(), this);
