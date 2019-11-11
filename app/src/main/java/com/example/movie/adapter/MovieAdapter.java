@@ -1,5 +1,6 @@
 package com.example.movie.adapter;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Movie;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.movie.R;
+import com.example.movie.activity.MovieDetailActivity;
 import com.example.movie.api.RestApiManager;
 import com.example.movie.model.MovieItem;
 
@@ -45,7 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.Holder holder, int position) {
-        MovieItem movie = movieItems.get(position);
+        final MovieItem movie = movieItems.get(position);
         Glide.with(context).load(RestApiManager.BASE_MOVIE_IMAGE+movie.getPosterPath()).centerCrop().into(holder.img);
         String pos = String.valueOf(position+1);
         String releaseYear = movie.getReleaseDate().split("-")[0];
@@ -60,10 +62,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.Holder> {
         holder.contentBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://google.com";
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setData(Uri.parse(url));
+//                String url = "https://google.com";
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.setData(Uri.parse(url));
+                Intent intent = new Intent(context, MovieDetailActivity.class);
+                intent.putExtra("movie",movie);
                 context.startActivity(intent);
             }
         });

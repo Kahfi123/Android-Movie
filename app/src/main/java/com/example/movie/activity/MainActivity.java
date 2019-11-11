@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 movieController.getTopRatedMovies(1);
             }
         });
-        movieAdapter = new MovieAdapter(new ArrayList<MovieItem>(), getApplicationContext());
+        movieAdapter = new MovieAdapter(new ArrayList<MovieItem>(), this);
         recyclerView.setAdapter(movieAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);

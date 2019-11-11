@@ -1,11 +1,12 @@
 package com.example.movie.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
-public class MovieItem{
+public class MovieItem implements Serializable {
 
 	@SerializedName("overview")
 	private String overview;
