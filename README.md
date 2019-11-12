@@ -12,4 +12,4 @@ It includes :
 
 Screenshot: 
 
-![top rated movies screenshot](https://github.com/Kahfi123/android-movie/blob/master/screenshot/ss_top_rated_movies.png)
+![top rated movies screenshot](https://github.com/Kahfi123/android-movie/blob/master/screenshot/android-movie.gif)
