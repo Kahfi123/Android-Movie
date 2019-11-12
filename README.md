@@ -10,6 +10,7 @@ It includes :
 4. It uses Retrofit, Glide, Gson, etc
 5. More features will be added soon.
 
-Screenshot: 
+Animated Screenshot:
+<br>
 <img src="https://github.com/Kahfi123/android-movie/blob/master/screenshot/android-movie.gif" width="360">
 
