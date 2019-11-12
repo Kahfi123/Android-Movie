@@ -7,15 +7,11 @@ import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
 public class MovieItem implements Serializable {
-
-	@SerializedName("overview")
-	private String overview;
-
 	@SerializedName("original_language")
 	private String originalLanguage;
 
-	@SerializedName("original_title")
-	private String originalTitle;
+	@SerializedName("imdb_id")
+	private String imdbId;
 
 	@SerializedName("video")
 	private boolean video;
@@ -23,32 +19,70 @@ public class MovieItem implements Serializable {
 	@SerializedName("title")
 	private String title;
 
-	@SerializedName("genre_ids")
-	private List<Integer> genreIds;
-
-	@SerializedName("poster_path")
-	private String posterPath;
-
 	@SerializedName("backdrop_path")
 	private String backdropPath;
 
-	@SerializedName("release_date")
-	private String releaseDate;
+	@SerializedName("revenue")
+	private int revenue;
+
+	@SerializedName("genres")
+	private List<GenresItem> genres;
 
 	@SerializedName("popularity")
 	private double popularity;
 
-	@SerializedName("vote_average")
-	private double voteAverage;
+	@SerializedName("production_countries")
+	private List<ProductionCountriesItem> productionCountries;
 
 	@SerializedName("id")
 	private int id;
 
+	@SerializedName("vote_count")
+	private int voteCount;
+
+	@SerializedName("budget")
+	private int budget;
+
+	@SerializedName("overview")
+	private String overview;
+
+	@SerializedName("original_title")
+	private String originalTitle;
+
+	@SerializedName("runtime")
+	private int runtime;
+
+	@SerializedName("poster_path")
+	private String posterPath;
+
+	@SerializedName("spoken_languages")
+	private List<SpokenLanguagesItem> spokenLanguages;
+
+	@SerializedName("production_companies")
+	private List<ProductionCompaniesItem> productionCompanies;
+
+	@SerializedName("release_date")
+	private String releaseDate;
+
+	@SerializedName("vote_average")
+	private double voteAverage;
+
+	@SerializedName("belongs_to_collection")
+	private Object belongsToCollection;
+
+	@SerializedName("tagline")
+	private String tagline;
+
 	@SerializedName("adult")
 	private boolean adult;
 
-	@SerializedName("vote_count")
-	private int voteCount;
+	@SerializedName("homepage")
+	private Object homepage;
+
+	@SerializedName("status")
+	private String status;
+	@SerializedName("genre_ids")
+	private List<Integer> genreIds;
 
 	public void setOverview(String overview){
 		this.overview = overview;
@@ -162,24 +196,121 @@ public class MovieItem implements Serializable {
 		return voteCount;
 	}
 
+	public String getImdbId() {
+		return imdbId;
+	}
+
+	public void setImdbId(String imdbId) {
+		this.imdbId = imdbId;
+	}
+
+	public int getRevenue() {
+		return revenue;
+	}
+
+	public void setRevenue(int revenue) {
+		this.revenue = revenue;
+	}
+
+	public List<GenresItem> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<GenresItem> genres) {
+		this.genres = genres;
+	}
+
+	public List<ProductionCountriesItem> getProductionCountries() {
+		return productionCountries;
+	}
+
+	public void setProductionCountries(List<ProductionCountriesItem> productionCountries) {
+		this.productionCountries = productionCountries;
+	}
+
+	public int getBudget() {
+		return budget;
+	}
+
+	public void setBudget(int budget) {
+		this.budget = budget;
+	}
+
+	public int getRuntime() {
+		return runtime;
+	}
+
+	public void setRuntime(int runtime) {
+		this.runtime = runtime;
+	}
+
+	public List<SpokenLanguagesItem> getSpokenLanguages() {
+		return spokenLanguages;
+	}
+
+	public void setSpokenLanguages(List<SpokenLanguagesItem> spokenLanguages) {
+		this.spokenLanguages = spokenLanguages;
+	}
+
+	public List<ProductionCompaniesItem> getProductionCompanies() {
+		return productionCompanies;
+	}
+
+	public void setProductionCompanies(List<ProductionCompaniesItem> productionCompanies) {
+		this.productionCompanies = productionCompanies;
+	}
+
+	public Object getBelongsToCollection() {
+		return belongsToCollection;
+	}
+
+	public void setBelongsToCollection(Object belongsToCollection) {
+		this.belongsToCollection = belongsToCollection;
+	}
+
+	public String getTagline() {
+		return tagline;
+	}
+
+	public void setTagline(String tagline) {
+		this.tagline = tagline;
+	}
+
+	public Object getHomepage() {
+		return homepage;
+	}
+
+	public void setHomepage(Object homepage) {
+		this.homepage = homepage;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
- 	public String toString(){
-		return 
-			"MovieItem{" + 
-			"overview = '" + overview + '\'' + 
-			",original_language = '" + originalLanguage + '\'' + 
-			",original_title = '" + originalTitle + '\'' + 
-			",video = '" + video + '\'' + 
-			",title = '" + title + '\'' + 
-			",genre_ids = '" + genreIds + '\'' + 
-			",poster_path = '" + posterPath + '\'' + 
-			",backdrop_path = '" + backdropPath + '\'' + 
-			",release_date = '" + releaseDate + '\'' + 
-			",popularity = '" + popularity + '\'' + 
-			",vote_average = '" + voteAverage + '\'' + 
-			",id = '" + id + '\'' + 
-			",adult = '" + adult + '\'' + 
-			",vote_count = '" + voteCount + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"MovieItem{" +
+						"overview = '" + overview + '\'' +
+						",original_language = '" + originalLanguage + '\'' +
+						",original_title = '" + originalTitle + '\'' +
+						",video = '" + video + '\'' +
+						",title = '" + title + '\'' +
+						",genre_ids = '" + genreIds + '\'' +
+						",poster_path = '" + posterPath + '\'' +
+						",backdrop_path = '" + backdropPath + '\'' +
+						",release_date = '" + releaseDate + '\'' +
+						",popularity = '" + popularity + '\'' +
+						",vote_average = '" + voteAverage + '\'' +
+						",id = '" + id + '\'' +
+						",adult = '" + adult + '\'' +
+						",vote_count = '" + voteCount + '\'' +
+						"}";
+	}
+
 }

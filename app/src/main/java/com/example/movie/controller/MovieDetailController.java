@@ -5,10 +5,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.example.movie.R;
 import com.example.movie.activity.MovieDetailActivity;
 import com.example.movie.api.ApiService;
 import com.example.movie.api.RestApiManager;
 import com.example.movie.helper.HelperUtil;
+import com.example.movie.model.GenresItem;
 import com.example.movie.model.MovieItem;
 
 import retrofit2.Call;
@@ -55,5 +57,21 @@ public class MovieDetailController {
         view.shimmeringContainer.stopShimmer();
         view.shimmeringContainer.setVisibility(View.GONE);
         view.contentBox.setVisibility(View.VISIBLE);
+        if(movie.isAdult()){
+            view.imgAdult.setImageDrawable(view.getResources().getDrawable(R.drawable.adults));
+        }else{
+            view.imgAdult.setImageDrawable(view.getResources().getDrawable(R.drawable.general));
+        }
+        view.txtRuntime.setText(String.valueOf(movie.getRuntime()));
+        String genres = "";
+        int i = 0;
+        for(GenresItem genre : movie.getGenres()){
+            genres += genre.getName();
+            if(i != movie.getGenres().size()-1){
+                genres += ", ";
+            }
+            i++;
+        }
+        view.txtGenres.setText(genres);
     }
 }

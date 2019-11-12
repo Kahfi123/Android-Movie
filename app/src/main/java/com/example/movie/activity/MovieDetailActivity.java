@@ -30,9 +30,10 @@ public class MovieDetailActivity extends AppCompatActivity {
     private static final String TAG = MovieDetailActivity.class.getSimpleName();
     private AppCompatTextView mTitleTextView;
     public ImageView imgMovieBackdrop, imgMoviePoster;
-    public TextView txtTitle, txtOverview, txtRatingNumbers, txtRating;
+    public TextView txtTitle, txtOverview, txtRatingNumbers, txtRating, txtGenres, txtRuntime;
     public ShimmerFrameLayout shimmeringContainer;
     public LinearLayout contentBox;
+    public ImageView imgAdult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +68,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         txtOverview = findViewById(R.id.txtOverview);
         txtRating = findViewById(R.id.txtRating);
         txtRatingNumbers = findViewById(R.id.txtRatingNumbers);
+        txtRuntime = findViewById(R.id.txtRuntime);
+        txtGenres = findViewById(R.id.txtGenres);
         shimmeringContainer = findViewById(R.id.shimmerMovieContainer);
+        imgAdult = findViewById(R.id.imgAdult);
         contentBox = findViewById(R.id.contentBox);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlack, this.getTheme()));
