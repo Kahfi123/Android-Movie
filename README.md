@@ -3,7 +3,8 @@ An android app about movie database
 <br>
 It includes : 
 <br>
-1. Showing top rated movies from themoviedb.org api -> 20 movies per page
+1. Show top rated movies from themoviedb.org api -> 20 movies per page
+2. Show movie detail on click
 2. Endless scroll with loading bar
 3. Swipe to refresh
 4. It uses Retrofit, Glide, Gson, etc
