@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="#F0EBEB"
+    android:background="@color/colorBoxBackground"
     android:orientation="horizontal"
     android:elevation="5dp"
     android:padding="10dp">
@@ -18,7 +18,7 @@
             android:layout_height="100dp"
             android:background="@drawable/image_not_found"
             android:contentDescription="@string/image_of_a_movie"
-            android:elevation="10dp" />
+            android:elevation="5dp" />
         <TextView
             android:id="@+id/txtPopularityNumbers"
             android:layout_marginTop="10dp"

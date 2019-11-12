@@ -6,4 +6,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="shimmeringBackground">#5D6860</color>
+    <color name="colorBoxBackground">#F0EBEB</color>
 </resources>

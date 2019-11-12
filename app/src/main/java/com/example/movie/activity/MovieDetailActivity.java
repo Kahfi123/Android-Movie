@@ -23,14 +23,12 @@ import com.example.movie.controller.MovieDetailController;
 import com.example.movie.model.MovieItem;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
-import org.w3c.dom.Text;
-
 
 public class MovieDetailActivity extends AppCompatActivity {
     private static final String TAG = MovieDetailActivity.class.getSimpleName();
     private AppCompatTextView mTitleTextView;
     public ImageView imgMovieBackdrop, imgMoviePoster;
-    public TextView txtTitle, txtOverview, txtRatingNumbers, txtRating, txtGenres, txtRuntime;
+    public TextView txtTitle, txtOverview, txtRatingNumbers, txtRating, txtGenres, txtRuntime, txtReleaseDate, txtLanguage, txtCountry, txtProductionCompanies;
     public ShimmerFrameLayout shimmeringContainer;
     public LinearLayout contentBox;
     public ImageView imgAdult;
@@ -73,6 +71,10 @@ public class MovieDetailActivity extends AppCompatActivity {
         shimmeringContainer = findViewById(R.id.shimmerMovieContainer);
         imgAdult = findViewById(R.id.imgAdult);
         contentBox = findViewById(R.id.contentBox);
+        txtReleaseDate = findViewById(R.id.txtReleaseDate);
+        txtLanguage = findViewById(R.id.txtLanguage);
+        txtCountry = findViewById(R.id.txtCountry);
+        txtProductionCompanies = findViewById(R.id.txtProductionCompanies);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlack, this.getTheme()));
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

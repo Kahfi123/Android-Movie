@@ -4,4 +4,10 @@
     <string name="image_of_a_movie">Image of A movie</string>
     <string name="rating_image">rating image</string>
     <string name="rating">0</string>
+    <string name="details">Details</string>
+    <string name="release_date">Release Date</string>
+    <string name="overview">Overview</string>
+    <string name="language">Language</string>
+    <string name="country_of_origin">Country of Origin</string>
+    <string name="production_companies">Production Companies</string>
 </resources>

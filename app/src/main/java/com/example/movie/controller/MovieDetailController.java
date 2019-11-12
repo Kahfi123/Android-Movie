@@ -12,6 +12,7 @@ import com.example.movie.api.RestApiManager;
 import com.example.movie.helper.HelperUtil;
 import com.example.movie.model.GenresItem;
 import com.example.movie.model.MovieItem;
+import com.example.movie.model.ProductionCompaniesItem;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -62,7 +63,8 @@ public class MovieDetailController {
         }else{
             view.imgAdult.setImageDrawable(view.getResources().getDrawable(R.drawable.general));
         }
-        view.txtRuntime.setText(String.valueOf(movie.getRuntime()));
+        String runtime = movie.getRuntime()+" min";
+        view.txtRuntime.setText(runtime);
         String genres = "";
         int i = 0;
         for(GenresItem genre : movie.getGenres()){
@@ -73,5 +75,19 @@ public class MovieDetailController {
             i++;
         }
         view.txtGenres.setText(genres);
+        view.txtReleaseDate.setText(movie.getReleaseDate());
+        view.txtLanguage.setText(movie.getSpokenLanguages().get(0).getName());
+        String prodCompanies = "";
+        i = 0;
+        for(ProductionCompaniesItem prodCompany : movie.getProductionCompanies()){
+            prodCompanies += prodCompany.getName();
+            if(i != movie.getProductionCompanies().size()-1){
+                prodCompanies += ", ";
+            }
+            i++;
+        }
+        view.txtProductionCompanies.setText(prodCompanies);
+        view.txtCountry.setText(movie.getProductionCountries().get(0).getName());
+
     }
 }
