@@ -11,5 +11,5 @@ It includes :
 5. More features will be added soon.
 
 Screenshot: 
+<img src="https://github.com/Kahfi123/android-movie/blob/master/screenshot/android-movie.gif" width="360">
 
-![top rated movies screenshot](https://github.com/Kahfi123/android-movie/blob/master/screenshot/android-movie.gif)
