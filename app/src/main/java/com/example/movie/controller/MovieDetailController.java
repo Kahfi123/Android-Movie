@@ -47,6 +47,9 @@ public class MovieDetailController {
     }
 
     private void updateView() {
+        if(view==null){
+            return;
+        }
         Glide.with(view).load(RestApiManager.BASE_MOVIE_IMAGE_w500+movie.getBackdropPath()).centerCrop().into(view.imgMovieBackdrop);
         Glide.with(view).load(RestApiManager.BASE_MOVIE_IMAGE_w92+movie.getPosterPath()).centerCrop().into(view.imgMoviePoster);
         String year = "("+HelperUtil.convertToYear(movie.getReleaseDate())+")";
