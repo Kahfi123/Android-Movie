@@ -78,7 +78,7 @@ public class MovieDetailController {
             i++;
         }
         view.txtGenres.setText(genres);
-        view.txtReleaseDate.setText(movie.getReleaseDate());
+        view.txtReleaseDate.setText(HelperUtil.convertToNormalDate(movie.getReleaseDate()));
         view.txtLanguage.setText(movie.getSpokenLanguages().get(0).getName());
         String prodCompanies = "";
         i = 0;
